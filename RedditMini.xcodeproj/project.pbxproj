@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		EFFBA8681F7B884A0025B29D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA8671F7B884A0025B29D /* AppDelegate.swift */; };
-		EFFBA86A1F7B884A0025B29D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA8691F7B884A0025B29D /* ViewController.swift */; };
+		EFFBA86A1F7B884A0025B29D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA8691F7B884A0025B29D /* FeedViewController.swift */; };
 		EFFBA86D1F7B884A0025B29D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFBA86B1F7B884A0025B29D /* Main.storyboard */; };
 		EFFBA86F1F7B884A0025B29D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFBA86E1F7B884A0025B29D /* Assets.xcassets */; };
 		EFFBA8721F7B884A0025B29D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFBA8701F7B884A0025B29D /* LaunchScreen.storyboard */; };
+		EFFBA87A1F7B8A420025B29D /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA8791F7B8A420025B29D /* FeedCollectionViewCell.swift */; };
+		EFFBA87C1F7B9A430025B29D /* JsonStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA87B1F7B9A430025B29D /* JsonStruct.swift */; };
+		EFFBA87E1F7B9DD50025B29D /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA87D1F7B9DD50025B29D /* ColorExtensions.swift */; };
+		EFFBA8801F7B9DE80025B29D /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA87F1F7B9DE80025B29D /* ViewExtensions.swift */; };
+		EFFBA8821F7B9EC80025B29D /* FeedViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA8811F7B9EC80025B29D /* FeedViewControllerExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EFFBA8641F7B884A0025B29D /* RedditMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFBA8671F7B884A0025B29D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EFFBA8691F7B884A0025B29D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EFFBA8691F7B884A0025B29D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		EFFBA86C1F7B884A0025B29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFFBA86E1F7B884A0025B29D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFFBA8711F7B884A0025B29D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFFBA8731F7B884A0025B29D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFFBA8791F7B8A420025B29D /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		EFFBA87B1F7B9A430025B29D /* JsonStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonStruct.swift; sourceTree = "<group>"; };
+		EFFBA87D1F7B9DD50025B29D /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		EFFBA87F1F7B9DE80025B29D /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		EFFBA8811F7B9EC80025B29D /* FeedViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +65,13 @@
 			isa = PBXGroup;
 			children = (
 				EFFBA8671F7B884A0025B29D /* AppDelegate.swift */,
-				EFFBA8691F7B884A0025B29D /* ViewController.swift */,
+				EFFBA8691F7B884A0025B29D /* FeedViewController.swift */,
+				EFFBA87B1F7B9A430025B29D /* JsonStruct.swift */,
 				EFFBA86B1F7B884A0025B29D /* Main.storyboard */,
+				EFFBA8811F7B9EC80025B29D /* FeedViewControllerExtensions.swift */,
+				EFFBA8791F7B8A420025B29D /* FeedCollectionViewCell.swift */,
+				EFFBA87D1F7B9DD50025B29D /* ColorExtensions.swift */,
+				EFFBA87F1F7B9DE80025B29D /* ViewExtensions.swift */,
 				EFFBA86E1F7B884A0025B29D /* Assets.xcassets */,
 				EFFBA8701F7B884A0025B29D /* LaunchScreen.storyboard */,
 				EFFBA8731F7B884A0025B29D /* Info.plist */,
@@ -136,8 +151,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFFBA86A1F7B884A0025B29D /* ViewController.swift in Sources */,
+				EFFBA86A1F7B884A0025B29D /* FeedViewController.swift in Sources */,
+				EFFBA87E1F7B9DD50025B29D /* ColorExtensions.swift in Sources */,
 				EFFBA8681F7B884A0025B29D /* AppDelegate.swift in Sources */,
+				EFFBA8821F7B9EC80025B29D /* FeedViewControllerExtensions.swift in Sources */,
+				EFFBA87C1F7B9A430025B29D /* JsonStruct.swift in Sources */,
+				EFFBA8801F7B9DE80025B29D /* ViewExtensions.swift in Sources */,
+				EFFBA87A1F7B8A420025B29D /* FeedCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
