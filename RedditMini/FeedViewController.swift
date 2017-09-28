@@ -12,7 +12,7 @@ var posts = [Thing]()
 let jsonUrlString = "https://api.reddit.com/r/iOSProgramming/"
 let cellId = "customCell"
 
-
+var listing: Listing?
 class FeedViewController: UIViewController {
 
     @IBOutlet weak var feedCollectionView: UICollectionView!
@@ -27,25 +27,32 @@ class FeedViewController: UIViewController {
         
         
         
-        guard let url = URL(string: jsonUrlString) else {return}
+      fetchThings(urlString: jsonUrlString)
+            
+    }
+    
+    func fetchThings(urlString: String)  {
+        guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {return}
             print("has some data")
             
             do{
-                let subReddit = try JSONDecoder().decode(Listing.self, from: data)
+                listing = try JSONDecoder().decode(Listing.self, from: data)
                 
                 DispatchQueue.main.async {
-                    posts = subReddit.data.children
+                    posts.append(contentsOf: listing!.data.children)
                     self.feedCollectionView.reloadData()
+                    print("Count \(posts.count)")
                 }
-               
+                
             }catch let jsonError{
                 print(jsonError)
             }
             
             }.resume()
     }
+
 }
 
