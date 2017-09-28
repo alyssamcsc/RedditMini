@@ -8,37 +8,10 @@
 
 import UIKit
 
+var posts = [Thing]()
 let jsonUrlString = "https://api.reddit.com/r/iOSProgramming/"
 let cellId = "customCell"
-struct SubReddit: Decodable {
-    let data :SubRedditData
-    let kind: String
-}
 
-struct SubRedditData: Decodable {
-    let after: String
-    let before: String?
-    let children :[SubRedditChildren]
-    let modhash: String
-}
-
-struct SubRedditChildren: Decodable{
-    let data: ChildrenData
-    let kind: String
-}
-
-struct ChildrenData: Decodable{
-    let title:String
-    
-}
-
-
-class Post {
-    var name: String?
-    var contentText:String?
-}
-
-var posts = [Post]()
 
 class FeedViewController: UIViewController {
 
@@ -50,7 +23,7 @@ class FeedViewController: UIViewController {
         self.feedCollectionView.delegate = self
         self.feedCollectionView.dataSource = self
         
-        posts = initSampleData()
+        //posts = initSampleData()
         
         
         
@@ -61,32 +34,18 @@ class FeedViewController: UIViewController {
             print("has some data")
             
             do{
-                let subReddit = try JSONDecoder().decode(SubReddit.self, from: data)
-                print(subReddit.data.children)
+                let subReddit = try JSONDecoder().decode(Listing.self, from: data)
+                
+                DispatchQueue.main.async {
+                    posts = subReddit.data.children
+                    self.feedCollectionView.reloadData()
+                }
+               
             }catch let jsonError{
                 print(jsonError)
             }
             
-            
-            
-            
             }.resume()
-        
-        
     }
-    
-    
-    func initSampleData() -> [Post] {
-        let postAlyssa = Post()
-        postAlyssa.name = "Alyssa Mae Sta Cruz"
-        postAlyssa.contentText = "Look at the iPhone 8. So nice!"
-        
-        let postAnita = Post()
-        postAnita.name = "Anita la Puebla"
-        postAnita.contentText = "Short stories are some of the first pieces of literature that children become acquainted with in their lives. However, as we age, sometimes we forget what these stories are about, their key elements or the ways that they continue to shape our lives as we grow."
-        
-        return [postAlyssa, postAnita]
-    }
-
 }
 

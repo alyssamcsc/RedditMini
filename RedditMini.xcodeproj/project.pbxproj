@@ -66,10 +66,10 @@
 			children = (
 				EFFBA8671F7B884A0025B29D /* AppDelegate.swift */,
 				EFFBA8691F7B884A0025B29D /* FeedViewController.swift */,
+				EFFBA8791F7B8A420025B29D /* FeedCollectionViewCell.swift */,
 				EFFBA87B1F7B9A430025B29D /* JsonStruct.swift */,
 				EFFBA86B1F7B884A0025B29D /* Main.storyboard */,
 				EFFBA8811F7B9EC80025B29D /* FeedViewControllerExtensions.swift */,
-				EFFBA8791F7B8A420025B29D /* FeedCollectionViewCell.swift */,
 				EFFBA87D1F7B9DD50025B29D /* ColorExtensions.swift */,
 				EFFBA87F1F7B9DE80025B29D /* ViewExtensions.swift */,
 				EFFBA86E1F7B884A0025B29D /* Assets.xcassets */,

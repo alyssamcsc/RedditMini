@@ -1,3 +1,4 @@
+
 //
 //  FeedCollectionViewCell.swift
 //  RedditMini
@@ -9,17 +10,25 @@
 import UIKit
 
 class FeedCollectionViewCell: UICollectionViewCell {
-    var post: Post?{
+    var post: Thing?{
         didSet{
-            if let name = post?.name{
+            if let name = post?.data.author{
                 let attributedText = NSMutableAttributedString(string: name, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)])
                 
-                attributedText.append(NSAttributedString(string: "\nTime * link", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)]))
+                attributedText.append(NSAttributedString(string: " * Time * link", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)]))
                 
                 nameLabel.attributedText = attributedText
             }
-            if let contentText = post?.contentText{
+            if let titleText = post?.data.title{
+                titleTextView.text = titleText
+            }
+            
+            if let contentText = post?.data.selfText{
                 contentTextView.text = contentText
+            }
+            
+            if let numComments = post?.data.numComments{
+                commentButton.titleLabel?.text = String(numComments)
             }
         }
     }
@@ -42,41 +51,25 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let profileImageView: UIImageView = {
-        // MARK: make profile image to a circle try in didlayoutsubviews
-        let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.gray
-        //imageView.image = UIImage(named: "dp1")
-        imageView.contentMode = .scaleAspectFit
-        //imageView.layer.cornerRadius = 20 //
-        return imageView
+    let titleTextView: UITextView = {
+        let textView = UITextView()
+      
+        textView.font = UIFont.systemFont(ofSize: 14)
+        textView.isScrollEnabled = false
+        textView.isEditable =  false
+        return textView
     }()
     
     let contentTextView: UITextView = {
         let textView = UITextView()
-        //textView.text = "Developing writers can often benefit from examining an essay, a paragraph, or even a sentence to determine what makes it effective. On the following pages are several paragraphs for you to evaluate on your own, along with the Writing Center's explanation."
-        textView.font = UIFont.systemFont(ofSize: 14)
+        textView.font = UIFont.systemFont(ofSize: 12)
         textView.isScrollEnabled = false
-        
+        textView.textColor = UIColor.rgb(red: 155, green: 161, blue: 171)
+        textView.isEditable = false
         return textView
     }()
     
-    let contentImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "dp2")
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.masksToBounds = true
-        
-        return imageView
-    }()
     
-    let likesCommentsLabel: UILabel = {
-        let label = UILabel()
-        label.text = "400 Likes  10.7K Comments"
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = UIColor.rgb(red: 155, green: 161, blue: 171)
-        return label
-    }()
     
     let dividerLineView: UIView = {
         let view = UIView()
@@ -93,9 +86,11 @@ class FeedCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 163) , for: .normal)
-        //        button.setImage(UIImage(named: imageName), for: .normal) //for button icon
+        button.setImage(UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = UIColor.rgb(red: 143, green: 150, blue: 163)
         button.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.isEnabled = false
         return button
     }
     
@@ -103,41 +98,28 @@ class FeedCollectionViewCell: UICollectionViewCell {
     func setupViews() {
         backgroundColor = UIColor.white
         addSubview(nameLabel)
-        addSubview(profileImageView)
-        addSubview(contentTextView)
-        addSubview(contentImageView)
-        //addSubview(likesCommentsLabel)
         addSubview(dividerLineView)
+        addSubview(titleTextView)
+        addSubview(contentTextView)
         addSubview(voteButton)
         addSubview(commentButton)
         addSubview(shareButton)
         
-        
-        
-        addConstraintsWithFormat(format: "H:|-8-[v0(36)]-8-[v1]|", views: profileImageView,nameLabel)
+        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: nameLabel)
+   
+        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: titleTextView)
         
         addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: contentTextView)
-        
-        addConstraintsWithFormat(format: "H:|[v0]|", views: contentImageView)
-        
-        //addConstraintsWithFormat(format: "H:|-12-[v0]|", views: likesCommentsLabel) //implement if button title not work
         
         addConstraintsWithFormat(format: "H:|-12-[v0]-12-|", views: dividerLineView)
         
         addConstraintsWithFormat(format: "H:|[v0(v2)][v1(v2)][v2]|", views: voteButton, commentButton, shareButton)
         
-        addConstraintsWithFormat(format: "V:|-12-[v0]", views: nameLabel)
-        
-        addConstraintsWithFormat(format: "V:|-8-[v0(44)]|", views: profileImageView)
-        
-        addConstraintsWithFormat(format: "V:|-8-[v0(44)]-4-[v3(0.4)]-4-[v1]-4-[v2(200)][v4(44)]|", views: profileImageView, contentTextView, contentImageView, dividerLineView, voteButton)
+        addConstraintsWithFormat(format: "V:|-8-[v0(18)]-4-[v1(0.4)][v2][v3][v4(44)]|", views: nameLabel, dividerLineView, titleTextView, contentTextView, voteButton)
         
         addConstraintsWithFormat(format: "V:[v0(44)]|", views: commentButton)
         
         addConstraintsWithFormat(format: "V:[v0(44)]|", views: shareButton)
-        
-        
-        
     }
 }
 
