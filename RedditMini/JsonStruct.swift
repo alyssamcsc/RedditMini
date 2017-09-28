@@ -14,7 +14,7 @@ struct Listing: Decodable {
 }
 
 struct ListingData: Decodable {
-    let after: String
+    let after: String?
     let before: String?
     let children :[Thing]
     let modhash: String
@@ -27,17 +27,19 @@ struct Thing: Decodable{
 
 struct Link: Decodable{
     let title:String?
-    let url: String
+    let permalink: String? //for link only
     let author: String
-    let selfText: String?
-    let numComments: Int
+    let selfText: String? // for link only
+    let numComments: Int?
+    let body: String? // for comment only
     
     enum CodingKeys: String, CodingKey {
         case title
-        case url
+        case permalink
         case author
         case selfText = "selftext"
         case numComments = "num_comments"
+        case body
     }
     
 }

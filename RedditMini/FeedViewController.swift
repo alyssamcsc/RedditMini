@@ -8,13 +8,13 @@
 
 import UIKit
 
-var posts = [Thing]()
-let jsonUrlString = "https://api.reddit.com/r/iOSProgramming/"
-let cellId = "customCell"
 
-var listing: Listing?
 class FeedViewController: UIViewController {
-
+    var listing: Listing?
+    var posts = [Thing]()
+    let jsonUrlString = "https://api.reddit.com/r/iOSProgramming/"
+    let cellId = "customCell"
+    
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -22,16 +22,11 @@ class FeedViewController: UIViewController {
         self.feedCollectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         self.feedCollectionView.delegate = self
         self.feedCollectionView.dataSource = self
+        fetchThings(urlString: jsonUrlString)
         
-        //posts = initSampleData()
-        
-        
-        
-      fetchThings(urlString: jsonUrlString)
-            
     }
     
-    func fetchThings(urlString: String)  {
+ func fetchThings(urlString: String)  {
         guard let url = URL(string: urlString) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -39,12 +34,12 @@ class FeedViewController: UIViewController {
             print("has some data")
             
             do{
-                listing = try JSONDecoder().decode(Listing.self, from: data)
+                self.listing = try JSONDecoder().decode(Listing.self, from: data)
                 
                 DispatchQueue.main.async {
-                    posts.append(contentsOf: listing!.data.children)
+                    self.posts.append(contentsOf: self.listing!.data.children)
                     self.feedCollectionView.reloadData()
-                    print("Count \(posts.count)")
+                    print("Count \(self.posts.count)")
                 }
                 
             }catch let jsonError{
@@ -53,6 +48,18 @@ class FeedViewController: UIViewController {
             
             }.resume()
     }
-
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "feedToDetailSeg" {
+            if let destination = segue.destination as? DetailViewController {
+                if let indexPath = feedCollectionView.indexPathsForSelectedItems?.first{
+                   destination.permalink = posts[indexPath.item].data.permalink
+                }
+            }
+            
+        }
+    }
+    
 }
 

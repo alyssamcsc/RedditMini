@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF0A079F1F7CFEF2004F5DB1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A079E1F7CFEF2004F5DB1 /* DetailViewController.swift */; };
+		EF0A07A11F7D07C9004F5DB1 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A07A01F7D07C9004F5DB1 /* ThingTableViewCell.swift */; };
 		EFFBA8681F7B884A0025B29D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA8671F7B884A0025B29D /* AppDelegate.swift */; };
 		EFFBA86A1F7B884A0025B29D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFBA8691F7B884A0025B29D /* FeedViewController.swift */; };
 		EFFBA86D1F7B884A0025B29D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFBA86B1F7B884A0025B29D /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF0A079E1F7CFEF2004F5DB1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EF0A07A01F7D07C9004F5DB1 /* ThingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingTableViewCell.swift; sourceTree = "<group>"; };
 		EFFBA8641F7B884A0025B29D /* RedditMini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditMini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFBA8671F7B884A0025B29D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFBA8691F7B884A0025B29D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF0A079D1F7CFEB4004F5DB1 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EFFBA87D1F7B9DD50025B29D /* ColorExtensions.swift */,
+				EFFBA87F1F7B9DE80025B29D /* ViewExtensions.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		EFFBA85B1F7B884A0025B29D = {
 			isa = PBXGroup;
 			children = (
@@ -64,14 +77,15 @@
 		EFFBA8661F7B884A0025B29D /* RedditMini */ = {
 			isa = PBXGroup;
 			children = (
+				EF0A079E1F7CFEF2004F5DB1 /* DetailViewController.swift */,
+				EF0A07A01F7D07C9004F5DB1 /* ThingTableViewCell.swift */,
 				EFFBA8671F7B884A0025B29D /* AppDelegate.swift */,
 				EFFBA8691F7B884A0025B29D /* FeedViewController.swift */,
 				EFFBA8791F7B8A420025B29D /* FeedCollectionViewCell.swift */,
+				EFFBA8811F7B9EC80025B29D /* FeedViewControllerExtensions.swift */,
 				EFFBA87B1F7B9A430025B29D /* JsonStruct.swift */,
 				EFFBA86B1F7B884A0025B29D /* Main.storyboard */,
-				EFFBA8811F7B9EC80025B29D /* FeedViewControllerExtensions.swift */,
-				EFFBA87D1F7B9DD50025B29D /* ColorExtensions.swift */,
-				EFFBA87F1F7B9DE80025B29D /* ViewExtensions.swift */,
+				EF0A079D1F7CFEB4004F5DB1 /* extensions */,
 				EFFBA86E1F7B884A0025B29D /* Assets.xcassets */,
 				EFFBA8701F7B884A0025B29D /* LaunchScreen.storyboard */,
 				EFFBA8731F7B884A0025B29D /* Info.plist */,
@@ -151,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF0A07A11F7D07C9004F5DB1 /* ThingTableViewCell.swift in Sources */,
 				EFFBA86A1F7B884A0025B29D /* FeedViewController.swift in Sources */,
 				EFFBA87E1F7B9DD50025B29D /* ColorExtensions.swift in Sources */,
 				EFFBA8681F7B884A0025B29D /* AppDelegate.swift in Sources */,
@@ -158,6 +173,7 @@
 				EFFBA87C1F7B9A430025B29D /* JsonStruct.swift in Sources */,
 				EFFBA8801F7B9DE80025B29D /* ViewExtensions.swift in Sources */,
 				EFFBA87A1F7B8A420025B29D /* FeedCollectionViewCell.swift in Sources */,
+				EF0A079F1F7CFEF2004F5DB1 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
