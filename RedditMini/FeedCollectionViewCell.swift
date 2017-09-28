@@ -28,7 +28,9 @@ class FeedCollectionViewCell: UICollectionViewCell {
             }
             
             if let numComments = post?.data.numComments{
-                commentButton.titleLabel?.text = String(numComments)
+                if numComments > 0{
+                    commentButton.titleLabel?.text = String(numComments)
+                }
             }
         }
     }

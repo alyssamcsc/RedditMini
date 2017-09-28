@@ -31,7 +31,7 @@ class ThingTableViewCell: UITableViewCell {
             if let name = post?.data.author{
                 let attributedText = NSMutableAttributedString(string: name, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)])
                 
-                attributedText.append(NSAttributedString(string: " * Time * link", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)]))
+                attributedText.append(NSAttributedString(string: " * Time * Link", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)]))
                 
                 nameLabel.attributedText = attributedText
             }
@@ -54,7 +54,7 @@ class ThingTableViewCell: UITableViewCell {
             if let name = comment?.data.author{
                 let attributedText = NSMutableAttributedString(string: name, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)])
                 
-                attributedText.append(NSAttributedString(string: " * Time * link", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)]))
+                attributedText.append(NSAttributedString(string: " * Time", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 155, green: 161, blue: 171)]))
                 
                 nameLabel.attributedText = attributedText
             }
@@ -154,11 +154,11 @@ class ThingTableViewCell: UITableViewCell {
         addSubview(nameLabel)
         addSubview(titleTextView)
         
-        addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: nameLabel)
+        addConstraintsWithFormat(format: "H:|-8-[v0]-4-|", views: nameLabel)
         
         addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: titleTextView)
         
-        addConstraintsWithFormat(format: "V:|-8-[v0(18)]-4-[v1]|", views: nameLabel, titleTextView)
+        addConstraintsWithFormat(format: "V:|-8-[v0(18)][v1]|", views: nameLabel, titleTextView)
         
     }
     

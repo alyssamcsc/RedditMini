@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--r/ios-->
+        <!--r/iOSProgramming-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FeedViewController" customModule="RedditMini" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,7 +38,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="r/ios" id="e6f-Iw-Bae"/>
+                    <navigationItem key="navigationItem" title="r/iOSProgramming" id="e6f-Iw-Bae"/>
                     <connections>
                         <outlet property="feedCollectionView" destination="sci-SU-A8p" id="vNE-E1-7Pt"/>
                         <segue destination="Yw3-br-HHA" kind="show" identifier="feedToDetailSeg" id="TJX-lC-Ibo"/>

@@ -49,7 +49,7 @@ extension FeedViewController:  UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item + 1 == posts.count {
-            let urlString = jsonUrlString + "?after=\(listing!.data.after)"
+            let urlString = jsonUrlString + "?after=\(listing!.data.after!)"
             print ("URL STRING: \(urlString)")
             fetchThings(urlString: urlString)
             
